@@ -9,13 +9,25 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeView'),
+        title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 12,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                controller.getDownloadDirectory();
+              },
+              child: const Text(
+                "Call API",
+                style: TextStyle(fontSize: 12),
+              ),
+            ),
+          ],
         ),
       ),
     );
