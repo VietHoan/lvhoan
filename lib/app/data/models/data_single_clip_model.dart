@@ -4,14 +4,15 @@
 
 import 'dart:convert';
 
-Map<String, DataYoutube> dataYoutubeFromJson(String str) =>
-    Map.from(json.decode(str)).map((k, v) => MapEntry<String, DataYoutube>(k, DataYoutube.fromJson(v)));
+Map<String, DataSingleClip> dataSingleClipFromJson(String str) =>
+    Map.from(json.decode(str)).map((k, v) => MapEntry<String, DataSingleClip>(k, DataSingleClip.fromJson(v)));
 
-String dataYoutubeToJson(Map<String, DataYoutube> data) =>
+String dataSingleClipToJson(Map<String, DataSingleClip> data) =>
     json.encode(Map.from(data).map((k, v) => MapEntry<String, dynamic>(k, v.toJson())));
 
-class DataYoutube {
-  DataYoutube({
+// This is response model to get link download mp3 or mp4
+class DataSingleClip {
+  DataSingleClip({
     this.title,
     this.result,
     this.size,
@@ -37,7 +38,7 @@ class DataYoutube {
   String? desc;
   String? quality;
 
-  factory DataYoutube.fromJson(Map<String, dynamic> json) => DataYoutube(
+  factory DataSingleClip.fromJson(Map<String, dynamic> json) => DataSingleClip(
         title: json["title"],
         result: json["result"],
         size: json["size"],
